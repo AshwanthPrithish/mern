@@ -1,18 +1,32 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
-import notes from "../../data/notes";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
+// MyNotes.js, handles the MyNotes component for App.js
 const MyNotes = () => {
+  //Handles a note's delete button
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
 
+  const [notes, setNotes] = useState([]);
+
+  const fetchNotes = async () => {
+    const { data } = await axios.get("/api/notes");
+    setNotes(data);
+  };
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+
+  // renders the mynotes component for app.js along with landingpage
   return (
     <MainScreen title="Hello, Ashwanth Prithish">
       <Link to="createnote">
@@ -21,7 +35,7 @@ const MyNotes = () => {
         </Button>
       </Link>
       {notes.map((note) => (
-        <Accordion defaultActiveKey="0">
+        <Accordion defaultActiveKey="0" key={note._id}>
           <Accordion.Item>
             <Card style={{ margin: 10 }}>
               <Card.Header style={{ display: "flex" }}>
@@ -35,7 +49,7 @@ const MyNotes = () => {
                     fontSize: 18,
                   }}
                 >
-                  <Accordion.Header as={Card.text} variant="link" eventKey="0">
+                  <Accordion.Header as={Card.text} variant="link">
                     {note.title}
                   </Accordion.Header>
                 </span>
@@ -50,7 +64,7 @@ const MyNotes = () => {
                   </Button>
                 </div>
               </Card.Header>
-              <Accordion.Body eventKey="0">
+              <Accordion.Body>
                 <Card.Body>
                   <h4>
                     <Badge bg="success" text="light">

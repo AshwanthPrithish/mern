@@ -5,6 +5,8 @@ import LandingPage from "./screens/LandingPage/LandingPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyNotes from "./screens/MyNotes/MyNotes";
 
+// Main app.js
+// Has path to LandingPage.js, MyNotes.js
 const App = () => (
   <BrowserRouter>
     <Header />

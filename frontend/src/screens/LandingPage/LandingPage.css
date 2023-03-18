@@ -1,5 +1,5 @@
 .title {
-  font-size: 95px;
+  font-size: 60px;
 }
 .subtitle {
   font-size: 25px;
@@ -30,16 +30,20 @@
 
 @media only screen and (min-width: 1200px) {
   .buttonContainer {
-    padding: 0 200px;
+    padding: 0 150px;
   }
   .title {
     padding: 0 200px;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1500px) {
   .title {
-    font-size: 60px;
+    font-size: 40px;
+  }
+  .subtitle {
+    font-size: 20px;
+    padding-top: 5px;
   }
   .landingbutton {
     width: 150px;

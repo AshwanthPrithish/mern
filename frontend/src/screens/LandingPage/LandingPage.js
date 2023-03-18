@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import "./LandingPage.css";
 
+// LandingPage(options -> login, signup); like the homepage component for App.js
 const LandingPage = () => {
   return (
     <div className="main">
