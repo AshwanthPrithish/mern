@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../actions/userActions";
 
-function Header() {
+function Header({ setSearch }) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ function Header() {
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
               />
             </Form>
           </Nav>
