@@ -9,11 +9,11 @@ const LandingPage = () => {
 
   const userInfo = localStorage.getItem("userInfo");
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     navigate("/mynotes");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/mynotes");
+    }
+  }, []);
   return (
     <div className="main">
       <Container>

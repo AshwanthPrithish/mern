@@ -10,7 +10,7 @@ function Header({ setSearch }) {
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const userInfo = userLogin;
+  const { userInfo } = userLogin;
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -36,22 +36,31 @@ function Header({ setSearch }) {
               />
             </Form>
           </Nav>
-          <Nav>
-            <Nav.Link>
-              <Link to="/mynotes">My Notes</Link>
-            </Nav.Link>
-            <NavDropdown title="Ashwanth" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item
-                onClick={() => {
-                  logoutHandler();
-                }}
-              >
-                Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+          {userInfo ? (
+            <Nav>
+              <Nav.Link>
+                <Link to="/mynotes">My Notes</Link>
+              </Nav.Link>
+              <NavDropdown title={userInfo?.name} id="basic-nav-dropdown">
+                <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  onClick={() => {
+                    logoutHandler();
+                  }}
+                >
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            <Nav>
+              {" "}
+              <Nav.Link>
+                <Link to="/login">Login</Link>
+              </Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
