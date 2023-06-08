@@ -64,7 +64,7 @@ const DeleteNote = asyncHandler(async (req, res) => {
 
   if (note) {
     var value = note.user.toString();
-    var fieldMatch = { value: req.user._id.toString() };
+    var fieldMatch = { id: req.params.id };
     await note.deleteOne(fieldMatch);
     res.json({ message: "Note Removed" });
   } else {
